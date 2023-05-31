@@ -6,6 +6,7 @@ df = pd.read_excel('input.xlsx')
 #print(df.columns)
 statuses = []
 urls = []
+data = []
 #get the values for a given column
 values = df['Website Url'].values
 for url in values : 
@@ -26,11 +27,11 @@ for url in values :
 	print(status)
 	urls.append(url)
 	statuses.append(status)
-print(statuses)
+	data.append([url, status])
 
 
 columns=['Website Url','Status']
-df = pd.DataFrame([urls,statuses], columns=columns)
+df = pd.DataFrame(data, columns=columns)
 writer = pd.ExcelWriter('output/file.xlsx', engine='xlsxwriter')
 # Convert the dataframe to an XlsxWriter Excel object.
 df.to_excel(writer, sheet_name='Sheet1', index=False)
