@@ -26,11 +26,11 @@ for url in values :
 	print(status)
 	urls.append(url)
 	statuses.append(status)
-#print(values)
+print(statuses)
 
 
 columns=['Website Url','Status']
-df = pd.DataFrame(list(urls,statuses), columns=columns)
+df = pd.DataFrame([urls,statuses], columns=columns)
 writer = pd.ExcelWriter('output/file.xlsx', engine='xlsxwriter')
 # Convert the dataframe to an XlsxWriter Excel object.
 df.to_excel(writer, sheet_name='Sheet1', index=False)
